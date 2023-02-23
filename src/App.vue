@@ -1,30 +1,28 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="fade">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script setup lang="ts">
+import NProgress from 'nprogress';
+import router from './router';
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+router.afterEach(() => {
+  NProgress.done();
+});
+</script>
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style scoped lang="sass">
+.fade-enter-from
+  opacity:0
+.fade-enter-active
+  transition: all 1s ease
+.fade-enter-to
+  opacity:1
 </style>
