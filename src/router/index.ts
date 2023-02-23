@@ -1,31 +1,17 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+
+const Login = () => import('@/views/Login/index.vue');
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/home',
-    children: [
-      {
-        path: '/home',
-        name:'Home',
-        component: () => import('../views/Home/Home.vue'),
-      },
-      {
-        path: '/hot',
-        name:'Hot',
-        component: () => import('../views/Hot/Hot.vue'),
-      },
-      {
-        path: '/publish',
-        name:'Publish',
-        component: () => import('../views/Publish/Publish.vue'),
-      },
-    ],
+    redirect: '/Login',
+    children: [{ path: '/Login', name: 'Login', component: Login }],
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes,
 });
 
