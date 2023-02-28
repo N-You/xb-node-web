@@ -5,6 +5,7 @@ type Result<T> = {
   code: number;
   message: string;
   data: T;
+  token?:string
 };
 export class Request {
   instance: AxiosInstance;
@@ -16,7 +17,7 @@ export class Request {
       (config) => {
         const token = localStorage.getItem('token') as string;
         if (token) {
-          config.headers.Authorization = token;
+          config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
       },

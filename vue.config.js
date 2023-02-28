@@ -1,5 +1,5 @@
 const path = require('path');
-const { defineConfig, configureWebpack } = require('@vue/cli-service');
+const { defineConfig} = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -7,11 +7,11 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '^/api': {
-        target: 'http://localhost:3000/', //接口的前缀
-        ws: true, //代理websocked
-        changeOrigin: true, //虚拟的站点需要更管origin
+        target: 'http://localhost:3000', 
+        ws: true, 
+        changeOrigin: true, 
         pathRewrite: {
-          '^/api': '', //重写路径
+          '^/api': '', 
         },
       },
     },
