@@ -3,6 +3,8 @@ import {ref} from 'vue'
 import { LogError } from '@/utils/LogError';
 import ApiService from '@/netWork/request';
 import { ElMessage } from 'element-plus';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
 export const userStore = defineStore('userStore',()=>{
   const Login = async (data:{name:string,password:string})=>{
@@ -23,12 +25,11 @@ export const userStore = defineStore('userStore',()=>{
 const getPosts = async () =>{
     try{
       const res = await ApiService.get('posts')
-      console.log(res.data);  
+      return res.data
     }catch(error:any){
       LogError(error)
     }
   }
-
     return {
       Login,
       getPosts
