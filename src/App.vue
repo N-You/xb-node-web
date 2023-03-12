@@ -19,6 +19,7 @@ router.afterEach(() => {
 </script>
 
 <style scoped lang="sass">
+@import 'nprogress/nprogress.css'
 .fade-enter-from
   opacity:0
 .fade-enter-active

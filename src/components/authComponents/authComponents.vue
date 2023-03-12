@@ -6,8 +6,8 @@
     <div class="box">
       <div class="card">
       <div class="card_header">
-        <h3 class="card-title">{{ props.title }}</h3>
-        <div class="card-subtitle">{{props.explin}}</div>
+        <h3 class="card-title">{{ title }}</h3>
+        <div class="card-subtitle">{{explin}}</div>
       </div>
       <div class="card_content">
         <slot name="form"></slot>
@@ -28,7 +28,7 @@
   
   const formData = reactive<{name:string,password:string}>({name:'',password:''})
 
-  const props = defineProps<{title:string,explin:string}>()
+defineProps<{title:string,explin:string}>()
   
   async function Login(){
     useUserStore.Login(formData)
