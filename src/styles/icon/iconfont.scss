@@ -1,10 +1,11 @@
 /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 @font-face {
   font-family: 'iconfont';  /* Project id 3176569 */
-  src: url('//at.alicdn.com/t/c/font_3176569_69t428scf4a.woff2?t=1678604548867') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3176569_69t428scf4a.woff?t=1678604548867') format('woff'),
-       url('//at.alicdn.com/t/c/font_3176569_69t428scf4a.ttf?t=1678604548867') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3176569_u14aa3wsb1f.woff2?t=1678698862765') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3176569_u14aa3wsb1f.woff?t=1678698862765') format('woff'),
+       url('//at.alicdn.com/t/c/font_3176569_u14aa3wsb1f.ttf?t=1678698862765') format('truetype');
 }
+
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -12,6 +13,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+  content: "\eafe";
 }
 
 .icon-31shouyexuanzhong:before {
@@ -85,4 +90,3 @@
 .icon-dianzan2:before {
   content: "\e603";
 }
-

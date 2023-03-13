@@ -2,25 +2,15 @@
   <div class="page">
     <home-menu></home-menu>
     <home-header></home-header>
-    <div class="pageMain">
-      <slot></slot>
-    </div>
+    <home-main></home-main>
   </div>
 </template>
 
-<script> 
-import {defineComponent} from 'vue'
-export default defineComponent({
-  name:'HomePage'
-})
-</script>
-
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-
-import GIcon from '@/components/global/icon.vue'
 import HomeHeader from './HomeHeader/index.vue'
 import HomeMenu from './HomeMenu/index.vue'
+import HomeMain from './HomeMain/index.vue'
 
 import {userStore} from '@/store/userStore'
 
@@ -33,3 +23,7 @@ onMounted(async ()=>{
  postList.value = res as any
 })
 </script>
+
+<style lang="sass" scoped>
+@import './styles/Home.sass'
+</style>

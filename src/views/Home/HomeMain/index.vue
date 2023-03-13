@@ -1,3 +1,3 @@
 <template>
-  <div>pagemain</div>
+  <div class="page-main"><router-view></router-view></div>
 </template>
