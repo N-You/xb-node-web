@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import GIcon from '@/components/global/icon.vue'
+
 </script>
 
 <style lang="sass" scoped>
