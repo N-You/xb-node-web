@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia'
-import {ref} from 'vue'
+import {ref, watch} from 'vue'
 import { LogError } from '@/utils/LogError';
 import ApiService from '@/netWork/request';
 import { ElMessage } from 'element-plus';
@@ -7,6 +7,8 @@ import { useRouter } from 'vue-router';
 const router = useRouter()
 
 export const userStore = defineStore('userStore',()=>{
+
+  const isLogin = ref<boolean>(false)
   const Login = async (data:{name:string,password:string})=>{
     try{
       const res = await ApiService.post('login',data)
@@ -22,6 +24,12 @@ export const userStore = defineStore('userStore',()=>{
     }
     }
 
+watch(()=>JSON.stringify(localStorage.getItem('token')),(value:any)=>{
+  value?isLogin.value = true : isLogin.value = false
+},{
+  immediate:true
+})
+
 const getPosts = async () =>{
     try{
       const res = await ApiService.get('posts')
@@ -31,6 +39,8 @@ const getPosts = async () =>{
     }
   }
     return {
+      isLogin,
+
       Login,
       getPosts
     }
