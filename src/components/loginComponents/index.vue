@@ -21,14 +21,14 @@
   </template>y
   
   <script setup lang="ts">
-  import { reactive,defineProps } from 'vue';
+  import { reactive } from 'vue';
   import {userStore} from '@/store/userStore'
 
   const useUserStore = userStore()
   
   const formData = reactive<{name:string,password:string}>({name:'',password:''})
 
-defineProps<{title:string,explin:string}>()
+  defineProps<{title:string,explin:string}>()
   
   async function Login(){
     useUserStore.Login(formData)

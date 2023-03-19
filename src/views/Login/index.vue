@@ -1,6 +1,6 @@
 <template>
   <div>
-    <authComponents title="登录" explin="登录模块">
+    <login-components title="登录" explin="登录模块">
       <template #img>
         <img src="../../assets/img/Login/undraw_login.png" alt="加载失败">
       </template>
@@ -17,13 +17,13 @@
       <template #footer>
         <button @click="Login">登陆</button>
       </template>
-    </authComponents>
+    </login-components>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import authComponents from '@/components/authComponents/authComponents.vue'
+import loginComponents from '@/components/loginComponents/index.vue'
 
 import {userStore} from '@/store/userStore'
 const useUserStore = userStore()

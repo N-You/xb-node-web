@@ -20,7 +20,6 @@ router.afterEach(() => {
 
 <style scoped lang="sass">
 @import 'nprogress/nprogress.css'
-@import './styles/appBase.sass'
 .fade-enter-from
   opacity:0
 .fade-enter-active

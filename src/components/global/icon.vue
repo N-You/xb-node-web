@@ -1,12 +1,12 @@
 <template>
-  <div class="iconfont" :class="[className]" :style="styleSheet"></div>
+  <div :class="['iconfont',className]" :style="styleSheet"></div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps,CSSProperties } from 'vue';
+import type { CSSProperties } from 'vue'
 
 defineProps<{
   className?:string,
-  styleSheet?:CSSProperties
+  styleSheet?:string | CSSProperties
 }>()
 </script>
