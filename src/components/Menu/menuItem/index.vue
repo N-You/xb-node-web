@@ -12,3 +12,8 @@ defineProps<{
   styleSheet?:string | CSSProperties
 }>();
 </script>
+
+<style lang="sass" scoped>
+.menuItem
+  cursor: pointer
+</style>

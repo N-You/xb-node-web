@@ -13,10 +13,10 @@ import { homeStore } from '@/store/homeStore'
 
 const useHomeStore = homeStore()
 
-const themeIcon = ref<string>('icon-moon-fill')
+const themeIcon = ref<string>('icon-ai250')
 
 watch(()=>useHomeStore.theme,(value:boolean)=>{
-  value? themeIcon.value = 'icon-moon-fill' : themeIcon.value = 'icon-ai250'
+  value? themeIcon.value = 'icon-ai250' : themeIcon.value = 'icon-moon-fill'
 },{
   immediate:true
 })

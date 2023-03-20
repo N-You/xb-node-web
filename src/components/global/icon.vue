@@ -10,3 +10,8 @@ defineProps<{
   styleSheet?:string | CSSProperties
 }>()
 </script>
+
+<style scoped lang="sass">
+.iconfont:active
+  transform: scale(0.95)
+</style>

@@ -24,14 +24,14 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import loginComponents from '@/components/loginComponents/index.vue'
-
 import {userStore} from '@/store/userStore'
+
 const useUserStore = userStore()
 
 const formData = reactive<{name:string,password:string}>({name:'',password:''})
 
 async function Login(){
-    useUserStore.Login(formData)
+  useUserStore.Login(formData)
 }
 </script>
 
