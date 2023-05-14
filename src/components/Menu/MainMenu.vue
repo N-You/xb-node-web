@@ -17,13 +17,13 @@ const menuList =  ref<Array<MenuItemType>>([
   },
   {
     info:'首页',
-    iconClass:'icon-sousuo',
+    iconClass:'icon-ren',
     link:'/'
     
   },
   {
     info:'首页',
-    iconClass:'icon-sousuo',
+    iconClass:'icon-dianzan',
     link:'/'
   }
 ])

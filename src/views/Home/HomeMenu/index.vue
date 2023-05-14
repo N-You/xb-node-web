@@ -34,10 +34,10 @@ watch(()=>useHomeStore.theme,(value:boolean)=>{
 const userAvatearImage = ref<any>()
 
 onMounted(async ()=>{
-  const userInfo = getStorage('user')
-  if(userInfo.avatar == null) return
+  const uid = getStorage('uid')
+  if(uid == null) return
   // userAvatearImage.value = await useUserStore.getUserAvatarById(userInfo.id,'small')
-  userAvatearImage.value = `http://localhost:3000/users/${userInfo.id}/avatar?size=small`
+  userAvatearImage.value = `http://localhost:3000/users/${uid}/avatar?size=small`
 })
 
 </script>
@@ -51,6 +51,6 @@ onMounted(async ()=>{
     height: 80rem
     margin-left: 50% 
     transform: translateX(-50%)
-  .userInfo
-    margin-top: -20vw
+.userInfo
+  margin: 20rem 0
 </style>

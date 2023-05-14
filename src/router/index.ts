@@ -6,10 +6,11 @@ const Login = () => import('@/views/Login/Login/index.vue');
 const Home = () => import('@/views/Home/Home.vue');
 const HomeIndex = () => import('@/views/HomePage/HomeIndex/index.vue')
 const UserShow = () => import('@/views/User/userShow.vue')
-const UserPost = () => import('@/views/User/pages/userPost.vue')
-const UserLiked = () => import('@/views/User/pages/userLiked.vue')
-const UserComments = () => import('@/views/User/pages/userComments.vue')
-const UserReplies = ()=>import('@/views/User/pages/userReplies.vue')
+const UserPost = () => import('@/views/User/show/userPost.vue')
+const UserLiked = () => import('@/views/User/show/userLiked.vue')
+const UserComments = () => import('@/views/User/show/userComments.vue')
+const UserReplies = ()=>import('@/views/User/show/userReplies.vue')
+const UserAccount = ()=>import('@/views/User/account/userAccount.vue')
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,7 +24,8 @@ const routes: Array<RouteRecordRaw> = [
           {path:'',name:'userPosts',component:UserPost},
           {path:'liked',name:'userLiked',component:UserLiked},
           {path:'comments',name:'userComments',component:UserComments},
-          {path:'replies',name:'userReplies',component:UserReplies}
+          {path:'replies',name:'userReplies',component:UserReplies},
+          {path:'account',name:'userAccount',component:UserAccount}
         ] },
       ] },
     ],

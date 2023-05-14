@@ -74,6 +74,7 @@ const getPosts = async () =>{
 
       Login,
       getPosts,
-      getUserAvatarById
+      getUserAvatarById,
+      getUserById
     }
 })

@@ -1,14 +1,23 @@
 <template>
   <div class="userShowMenu">
-    <div class="userShowMenu-item" v-for="(item,index) of menuItems" :key="index">
-        <RouterLink class="link" :to="item.linkTo">{{ item.text }}</RouterLink>
+    <div
+      class="userShowMenu-item"
+      v-for="(item, index) of menuItems"
+      :key="index"
+    >
+      <RouterLink class="link" :to="item.linkTo">{{ item.text }}</RouterLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import { RouterLink } from 'vue-router'
+import { getStorage } from '@/utils/setStorage';
+import { reactive,watch } from 'vue';
+import { RouterLink } from 'vue-router';
+
+const props = defineProps<{
+  user:Object
+}>()
 
 let menuItems = reactive<
   Array<{
@@ -35,6 +44,36 @@ let menuItems = reactive<
     text: '回复',
   },
 ]);
+
+let accountItem = reactive<{
+  linkTo: {
+    name: string;
+  };
+  text: string;
+}>({
+  linkTo: { name: 'userAccount' },
+  text: '账户',
+});
+
+function addUserAccountItem(){
+  if(menuItems.some(item => item.text !== "账户")){
+    menuItems = [...menuItems,accountItem]
+  }
+}
+function deleteUserAccountItem(){
+  menuItems = menuItems.filter(item=>item.text !== "账户")
+}
+
+watch(()=>props.user,(value:any)=>{
+  let uid = getStorage("uid")
+  if(value.id && value.id == uid){
+    addUserAccountItem()
+  }else{
+    deleteUserAccountItem()
+  }
+},{
+  immediate:true
+})
 </script>
 
 <style lang="sass" scoped>
@@ -62,7 +101,7 @@ let menuItems = reactive<
 
         .router-link-exact-active
             color: var(--primary-text-color)
-        
+
         .router-link-exact-active::after
             border-bottom-color: var(--primary-text-color)
             width: 20rem

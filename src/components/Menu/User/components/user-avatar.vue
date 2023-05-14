@@ -1,18 +1,17 @@
 <template>
   <div :class="['user-avatar',size]">
-    <img class="image" :src="avatarSrc"/>
+    <img class="image" :src="avatarSrc ? avatarSrc : minePng"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
 import minePng from '@/assets/img/mine.png'
 
 withDefaults(defineProps<{
   avatarSrc:string,
   size:string,
 }>(),  {
-    avatarSrc:minePng,
+    avatarSrc:'',
     size:'small'
 })
 
@@ -26,12 +25,12 @@ withDefaults(defineProps<{
     width: 100%
 
 .user-avatar.small
-  width: 64rem
-  height: 64rem
+  width: 24rem
+  height: 24rem
 .user-avatar.medium
-  width:128rem
-  height:128rem
+  width:48rem
+  height:48rem
 .user-avatar.large
-  width:180rem
-  height:180rem
+  width:96rem
+  height:96rem
 </style>

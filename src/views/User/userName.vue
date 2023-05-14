@@ -19,7 +19,7 @@ const props = defineProps<{
 
 const userNameLinkTo = computed(()=>{
     return {
-        name:'UserShow',
+        name:'userPosts',
         params:{userId:props.user.id}                                                                       
     }
 })
