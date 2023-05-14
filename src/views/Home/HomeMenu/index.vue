@@ -17,7 +17,7 @@ import { homeStore } from '@/store/homeStore';
 import { userStore } from '@/store/userStore';
 import lightLogo from '@/assets/img/logo3.jpg'
 import darkLogo from '@/assets/img/logo3.png'
-import userAvatar from '../../User/components/user-avatar.vue'
+import userAvatar from '@/components/Menu/User/components/user-avatar.vue'
 import { getStorage } from '@/utils/setStorage';
 
 const themeLogo = ref<any>(lightLogo)
@@ -33,12 +33,11 @@ watch(()=>useHomeStore.theme,(value:boolean)=>{
 
 const userAvatearImage = ref<any>()
 
-onMounted(()=>{
+onMounted(async ()=>{
   const userInfo = getStorage('user')
-  // if(userInfo.avatar){
-  //   const data =useUserStore.getUserAvatarById(userInfo.id)
-  //   userAvatearImage.value = data
-  // } 
+  if(userInfo.avatar == null) return
+  // userAvatearImage.value = await useUserStore.getUserAvatarById(userInfo.id,'small')
+  userAvatearImage.value = `http://localhost:3000/users/${userInfo.id}/avatar?size=small`
 })
 
 </script>
@@ -46,10 +45,12 @@ onMounted(()=>{
 <style scoped lang="sass">
 .logo
   width: 100%
-  margin-bottom:64rem
+  margin-bottom:1vw
   img
     width: 64rem
     height: 64rem
     margin-left: 50% 
     transform: translateX(-50%)
+  .userInfo
+    margin-top: -20vw
 </style>

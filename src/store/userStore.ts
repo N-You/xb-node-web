@@ -51,12 +51,12 @@ const getUserById = async (userId:number)=>{
 
 const getUserAvatarById = async(userId:number,size?:string) =>{
   try{
-    const res = await ApiService.get(`users/${userId}/avatar`)
+    const res = await ApiService.get(`users/${userId}/avatar?size=${size}`)
     
-    return window.URL.createObjectURL(res.data as any)
+    return window.URL.createObjectURL(res?.data as any)
   }catch(error:any){
     const { response:res } = error
-    LogError(res.data.message)
+    LogError(res)
   }
 }
 

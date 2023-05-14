@@ -1,7 +1,7 @@
 import { getStorage } from '@/utils/setStorage';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-const Login = () => import('@/views/Login/index.vue');
+const Login = () => import('@/views/Login/Login/index.vue');
 
 const Home = () => import('@/views/Home/Home.vue');
 const HomeIndex = () => import('@/views/HomePage/HomeIndex/index.vue')

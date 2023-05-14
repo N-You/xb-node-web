@@ -20,7 +20,7 @@
   </div>
   </template>y
   
-  <script setup lang="ts">
+  <script lang="ts" setup>
   import { reactive } from 'vue';
   import {userStore} from '@/store/userStore'
 
@@ -29,10 +29,7 @@
   const formData = reactive<{name:string,password:string}>({name:'',password:''})
 
   defineProps<{title:string,explin:string}>()
-  
-  async function Login(){
-    useUserStore.Login(formData)
-  }
+
   </script>
   
   <style scoped lang="sass">

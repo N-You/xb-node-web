@@ -9,7 +9,7 @@ type Result<T> = {
 };
 export class Request {
   instance: AxiosInstance;
-  baseConfig: AxiosRequestConfig = { baseURL: './api', timeout: 3000 };
+  baseConfig: AxiosRequestConfig = { baseURL: '/api', timeout: 3000 };
 
   constructor(config: AxiosRequestConfig) {
     this.instance = axios.create(Object.assign(this.baseConfig, config));
