@@ -14,7 +14,7 @@ export interface User{
 
 export const userStore = defineStore('userStore',()=>{
 
-  const isLogin = ref<boolean>(false)
+  let isLogin = ref<boolean>(false)
   const Login = async (data:{name:string,password:string})=>{
     try{
       const res:any = await ApiService.post('login',data)

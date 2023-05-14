@@ -45,10 +45,10 @@ onMounted(async ()=>{
 <style scoped lang="sass">
 .logo
   width: 100%
-  margin-bottom:1vw
+  margin-bottom:20rem
   img
-    width: 64rem
-    height: 64rem
+    width: 80rem
+    height: 80rem
     margin-left: 50% 
     transform: translateX(-50%)
   .userInfo

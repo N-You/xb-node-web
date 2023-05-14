@@ -7,12 +7,13 @@
 <script setup lang="ts">
 import {ref} from 'vue'
 import minePng from '@/assets/img/mine.png'
-const size = ref<string>('small')
 
 withDefaults(defineProps<{
-  avatarSrc:any
+  avatarSrc:string,
+  size:string,
 }>(),  {
-    avatarSrc:minePng
+    avatarSrc:minePng,
+    size:'small'
 })
 
 </script>
@@ -25,12 +26,12 @@ withDefaults(defineProps<{
     width: 100%
 
 .user-avatar.small
-  width: 16rem
-  height: 16rem
+  width: 64rem
+  height: 64rem
 .user-avatar.medium
-  width:32rem
-  height:32rem
-.user-avatar.small
-  width:64rem
-  height:64rem
+  width:128rem
+  height:128rem
+.user-avatar.large
+  width:180rem
+  height:180rem
 </style>
