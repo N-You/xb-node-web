@@ -56,7 +56,7 @@ let accountItem = reactive<{
 });
 
 function addUserAccountItem(){
-  if(menuItems.some(item => item.text !== "账户")){
+  if(!menuItems.find(item => item.text == "账户")){
     menuItems = [...menuItems,accountItem]
   }
 }
