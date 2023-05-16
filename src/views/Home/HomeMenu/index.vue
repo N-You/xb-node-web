@@ -5,7 +5,7 @@
     </div>
     <div class="userInfo">
       <user-avatar :avatarSrc="userAvatearImage"></user-avatar>
-    </div>
+    </div>    ··1·
     <main-menu></main-menu>
   </div>
 </template>
@@ -20,10 +20,10 @@ import darkLogo from '@/assets/img/logo3.png'
 import userAvatar from '../../User/components/user-avatar.vue'
 import { getStorage } from '@/utils/setStorage';
 
-const themeLogo = ref<any>(lightLogo)
+const themeLogo = ref<any>()
 
 const useHomeStore = homeStore()
-const useUserStore = userStore()
+// const useUserStore = userStore()
 
 watch(()=>useHomeStore.theme,(value:boolean)=>{
   value ? themeLogo.value = lightLogo : themeLogo.value = darkLogo
@@ -31,14 +31,16 @@ watch(()=>useHomeStore.theme,(value:boolean)=>{
   immediate:true
 })
 
-const userAvatearImage = ref<any>()
+const userAvatearImage = ref<string>()
 
-onMounted(()=>{
+onMounted(async ()=>{
   const userInfo = getStorage('user')
-  // if(userInfo.avatar){
-  //   const data =useUserStore.getUserAvatarById(userInfo.id)
-  //   userAvatearImage.value = data
-  // } 
+  if(userInfo.avatar == null) return
+  // const res = await useUserStore.getUserAvatarById(userInfo.id,'small')
+  //   let imageData = res?.data as any
+  //   let imageUrl = new Blob([imageData], { type: 'image/jpeg' });
+  //   userAvatearImage.value = res && URL.createObjectURL(imageUrl as any).toString()
+    userAvatearImage.value = `http://localhost:3000/users/${userInfo.id}/avatar?size=small`
 })
 
 </script>

@@ -5,7 +5,7 @@
         <img src="../../assets/img/Login/undraw_login.png" alt="加载失败">
       </template>
       <template #form>
-        <el-form :model="formData">
+        <el-form ref="ruleFormRef" :rules="rules" :model="formData">
         <el-form-item label="名称">
           <el-input v-model="formData.name"></el-input>
         </el-form-item>
@@ -15,16 +15,19 @@
       </el-form>
       </template>
       <template #footer>
-        <button @click="Login">登陆</button>
+        <el-button type="primary" @click="Login">登陆</el-button>
       </template>
     </login-components>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import loginComponents from '@/components/loginComponents/index.vue'
 import {userStore} from '@/store/userStore'
+import { FormInstance } from 'element-plus/es/components/form';
+
+const ruleFormRef = ref<FormInstance>()
 
 const useUserStore = userStore()
 

@@ -18,7 +18,7 @@
     </div>
     </div>
   </div>
-  </template>y
+  </template>
   
   <script setup lang="ts">
   import { reactive } from 'vue';
@@ -30,7 +30,7 @@
 
   defineProps<{title:string,explin:string}>()
   
-  async function Login(){
+  function Login(){
     useUserStore.Login(formData)
   }
   </script>

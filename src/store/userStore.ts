@@ -33,12 +33,14 @@ export const userStore = defineStore('userStore',()=>{
     }
     }
 
+    /* 根据本地存储的token信息来更新登录状态 */
 watch(()=>getStorage('token'),(value:any)=>{
-  value?isLogin.value = true : isLogin.value = false
+  value ? isLogin.value = true : isLogin.value = false
 },{
   immediate:true
 })
 
+/* 请求获取用户信息 */
 const getUserById = async (userId:number)=>{
   try{
     const res = await ApiService.get(`/users/${userId}`)
@@ -49,31 +51,31 @@ const getUserById = async (userId:number)=>{
   }
 }
 
-const getUserAvatarById = async(userId:number,size?:string) =>{
+/* 获取用户头像 */
+const getUserAvatarById = async(userId:number,size = 'small') =>{
   try{
-    const res = await ApiService.get(`users/${userId}/avatar`)
-    
-    return window.URL.createObjectURL(res.data as any)
+    const res = await ApiService.get(`users/${userId}/avatar?size=${size}`)
+    return res
   }catch(error:any){
     const { response:res } = error
-    LogError(res.data.message)
+    LogError('获取图片失败')
   }
 }
 
-const getPosts = async () =>{
-    try{
-      const res = await ApiService.get('posts')
-      return res.data
-    }catch(error:any){
-      LogError(error)
-    }
-  }
+// const getPosts = async () =>{
+//     try{
+//       const res = await ApiService.get('posts')
+//       return res.data
+//     }catch(error:any){
+//       LogError(error)
+//     }
+//   }
 
   return {
       isLogin,
 
       Login,
-      getPosts,
+      // getPosts,
       getUserAvatarById
     }
 })

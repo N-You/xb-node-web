@@ -2,6 +2,8 @@ import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 type Result<T> = {
+blob(): unknown;
+[x: string]: any;
   code: number;
   message: string;
   data: T;

@@ -25,8 +25,8 @@ withDefaults(defineProps<{
     width: 100%
 
 .user-avatar.small
-  width: 16rem
-  height: 16rem
+  width: 5rem
+  height: 5rem
 .user-avatar.medium
   width:32rem
   height:32rem

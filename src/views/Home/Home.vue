@@ -32,8 +32,8 @@ watch(
 const postList = ref<Array<any>>([]);
 
 onMounted(async () => {
-  let res = await useUserStore.getPosts();
-  postList.value = res as any;
+  // let res = await useUserStore.getPosts();
+  // postList.value = res as any;
 });
 </script>
 
