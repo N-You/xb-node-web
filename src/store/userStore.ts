@@ -14,7 +14,7 @@ export interface User{
 
 export const userStore = defineStore('userStore',()=>{
 
-  const isLogin = ref<boolean>(false)
+  let isLogin = ref<boolean>(false)
   const Login = async (data:{name:string,password:string})=>{
     try{
       const res:any = await ApiService.post('login',data)
@@ -55,10 +55,11 @@ const getUserById = async (userId:number)=>{
 const getUserAvatarById = async(userId:number,size = 'small') =>{
   try{
     const res = await ApiService.get(`users/${userId}/avatar?size=${size}`)
-    return res
+    
+    return window.URL.createObjectURL(res?.data as any)
   }catch(error:any){
     const { response:res } = error
-    LogError('获取图片失败')
+    LogError(res)
   }
 }
 
@@ -76,6 +77,7 @@ const getUserAvatarById = async(userId:number,size = 'small') =>{
 
       Login,
       // getPosts,
-      getUserAvatarById
+      getUserAvatarById,
+      getUserById
     }
 })
