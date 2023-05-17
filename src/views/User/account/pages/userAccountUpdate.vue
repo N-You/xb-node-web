@@ -38,7 +38,6 @@ function onChangeAvatarFileField(target: any) {
 function createAvatarPreviewImage(file: any) {
   const fileReader = new FileReader();
   fileReader.readAsDataURL(file);
-  console.log("🚀 ~ file: userAccountUpdate.vue:42 ~ createAvatarPreviewImage ~ avatarPreViewImage.value:", avatarPreViewImage.value)
   fileReader.onload = (event: any) => {
     avatarPreViewImage.value = event.target?.result;
 
