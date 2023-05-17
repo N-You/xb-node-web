@@ -10,11 +10,6 @@ import UserAccountUpdate from './pages/userAccountUpdate.vue';
 const props = defineProps<{
     user:Object
 }>()
-
-function handle(){
-    console.log(333);
-    
-}
 </script>
 
 <style lang="sass" scoped>

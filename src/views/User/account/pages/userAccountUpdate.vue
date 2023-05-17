@@ -22,15 +22,32 @@
 <script setup lang="ts">
 import FileField from '@/components/File/fileField.vue';
 import { ref } from 'vue';
+import {userAcountStore} from '@/store/userAcountStore'
+import {notificatonStore} from '@/store/notificationStore'
+
+const useNotificationStore = notificatonStore()
+
+const useUserAccountStore = userAcountStore()
 
 let avatarPreViewImage = ref<string>('');
+let avatarFile = ref<any>()
 
-function handleSubmit() {
-  console.log('123');
+async function handleSubmit() {
+  try{
+    await useUserAccountStore.ctreateAvatar(avatarFile.value)
+    useNotificationStore.addMessage({
+    content:'设置头像成功!',
+  })
+  }catch(err:any){
+    useNotificationStore.addMessage({
+    content:'设置头像失败!',
+  })
+  }
 }
 
 function onChangeAvatarFileField(target: any) {
   if (target.files) {
+    avatarFile.value = target.files[0]
     createAvatarPreviewImage(target.files[0]);
   }
 }

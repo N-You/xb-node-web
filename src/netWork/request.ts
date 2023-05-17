@@ -15,9 +15,9 @@ export class Request {
     this.instance = axios.create(Object.assign(this.baseConfig, config));
     this.instance.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem('token') as string;
+        const token = JSON.parse(localStorage.getItem('token') as any);
         if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+          config.headers.Authorization = 'Bearer ' + token;
         }
         return config;
       },

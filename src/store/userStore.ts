@@ -29,9 +29,10 @@ export const userStore = defineStore('userStore',()=>{
       router.push({path:'/home'})
     }catch(error:any){  
       const { response:res } = error
-      LogError(res.data.message)
+      LogError(res)
     }
     }
+
 
 watch(()=>getStorage('token'),(value:any)=>{
   value?isLogin.value = true : isLogin.value = false
