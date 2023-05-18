@@ -2,18 +2,19 @@
   <div class="userAccountUpdate">
     <div class="form">
       <div class="header">设置头像</div>
-      <div class="field" v-if="avatarPreViewImage">
-    <img class="image" :src="avatarPreViewImage"/>
+      <div class="field" v-if="avatarFile">
+    <img class="image" :src="useUserStore.avatarPreviewImage"/>
     </div>
-    <div style="display: flex;align-items: center;margin: 20rem 0;">
+    <div style="display: flex;align-items: center;margin: 20rem 0;column-gap: 20rem;">
         <FileField
-        text="选择文件"
+        :text="avatarFiledText"
         size="large"
         name="avatar"
         fileType="image/*"
         @change="onChangeAvatarFileField"
       ></FileField>
       <button size="large" @click="handleSubmit">提交</button>
+      <button v-if="useUserStore.avatarPreviewImage" size="large" @click="handleCancel">取消</button>
     </div>
     </div>
   </div>
@@ -21,28 +22,47 @@
 
 <script setup lang="ts">
 import FileField from '@/components/File/fileField.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import {userAcountStore} from '@/store/userAcountStore'
 import {notificatonStore} from '@/store/notificationStore'
+import {userStore} from '@/store/userStore'
 
 const useNotificationStore = notificatonStore()
 
 const useUserAccountStore = userAcountStore()
 
-let avatarPreViewImage = ref<string>('');
+const useUserStore = userStore()
+
 let avatarFile = ref<any>()
 
+let avatarFiledText = computed(()=>{
+  return avatarFile.value ? '重新选择' : '选择头像'
+})
+
 async function handleSubmit() {
+  if(!avatarFile.value){
+    useNotificationStore.addMessage({
+    content:'请选择上传图片!',
+  })
+  return 
+  }
   try{
     await useUserAccountStore.ctreateAvatar(avatarFile.value)
     useNotificationStore.addMessage({
     content:'设置头像成功!',
   })
+  avatarFile.value = null
+  location.reload()
   }catch(err:any){
     useNotificationStore.addMessage({
     content:'设置头像失败!',
   })
   }
+}
+
+function handleCancel(){
+  useUserAccountStore.setAvatarPreviewImage('')
+  avatarFile.value = null
 }
 
 function onChangeAvatarFileField(target: any) {
@@ -56,7 +76,7 @@ function createAvatarPreviewImage(file: any) {
   const fileReader = new FileReader();
   fileReader.readAsDataURL(file);
   fileReader.onload = (event: any) => {
-    avatarPreViewImage.value = event.target?.result;
+   useUserAccountStore.setAvatarPreviewImage(event.target?.result)
 
   };
 }
@@ -65,7 +85,6 @@ function createAvatarPreviewImage(file: any) {
 <style scoped lang="sass">
 .header
     font-size: 30rem
-    margin: 10rem 0
 .image
     width: 128rem
     height: 128rem

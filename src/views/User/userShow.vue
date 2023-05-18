@@ -19,7 +19,9 @@ import { getStorage } from '@/utils/setStorage';
 import { onMounted, ref, watch } from 'vue';
 import { RouterView } from 'vue-router';
 import { userStore } from '@/store/userStore';
+import { userAcountStore } from '@/store/userAcountStore';
 const useUserStore = userStore();
+const useUserAccountStore = userAcountStore()
 
 let userAvatearImage = ref<string>('');
 
@@ -39,7 +41,8 @@ function getUserInfo(id:number) {
     userAvatearImage.value = ``;
     return
   }
-  userAvatearImage.value = `http://localhost:3000/users/${id}/avatar?size=large`;
+  useUserAccountStore.setAvatarPreviewImage(`http://localhost:3000/users/${id}/avatar?size=large`)
+  userAvatearImage.value = useUserStore.avatarPreviewImage;
 }
 
 watch(

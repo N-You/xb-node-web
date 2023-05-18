@@ -1,4 +1,4 @@
-import {defineStore} from 'pinia'
+import {acceptHMRUpdate, defineStore} from 'pinia'
 import {ref, watch} from 'vue'
 import { LogError } from '@/utils/LogError';
 import ApiService from '@/netWork/request';
@@ -15,6 +15,7 @@ export interface User{
 export const userStore = defineStore('userStore',()=>{
 
   let isLogin = ref<boolean>(false)
+  let avatarPreviewImage = ref<string>('')
   const Login = async (data:{name:string,password:string})=>{
     try{
       const res:any = await ApiService.post('login',data)
@@ -72,6 +73,7 @@ const getPosts = async () =>{
 
   return {
       isLogin,
+      avatarPreviewImage,
 
       Login,
       getPosts,
@@ -79,3 +81,7 @@ const getPosts = async () =>{
       getUserById
     }
 })
+
+if (import.meta.webpackHot ) {
+  import.meta.webpackHot .accept(acceptHMRUpdate(userStore as any, import.meta.webpackHot ))
+}

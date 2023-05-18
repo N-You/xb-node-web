@@ -1,5 +1,5 @@
 <template>
-  <div class="MenuStyle" v-for="item of menuList" :key="item.info">
+  <div class="MenuStyle" v-for="item of menuList" :key="item.info" @click="handleRouter(item.link)">
     <MenuItem :iconClass="item.iconClass" styleSheet="font-size:25rem" :info="item.info"></MenuItem>
   </div>
 </template>
@@ -8,6 +8,7 @@
 import {ref} from 'vue'
 import MenuItem from './menuItem/index.vue'
 import { MenuItemType } from '@/type/index';
+import router from '@/router';
 
 const menuList =  ref<Array<MenuItemType>>([
   {
@@ -16,10 +17,9 @@ const menuList =  ref<Array<MenuItemType>>([
     link:'/'
   },
   {
-    info:'首页',
+    info:'用户',
     iconClass:'icon-ren',
-    link:'/'
-    
+    link:`/home/users/${localStorage.getItem('uid')}`
   },
   {
     info:'首页',
@@ -27,6 +27,10 @@ const menuList =  ref<Array<MenuItemType>>([
     link:'/'
   }
 ])
+
+function handleRouter(data:string){
+  router.push(data)
+}
 </script>
 
 <style lang="sass" scoped>
