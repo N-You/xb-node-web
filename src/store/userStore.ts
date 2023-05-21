@@ -30,7 +30,7 @@ export const userStore = defineStore('userStore',()=>{
       router.push({path:'/home'})
     }catch(error:any){  
       const { response:res } = error
-      LogError(res)
+      LogError(res.data.message)
     }
     }
 

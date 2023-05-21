@@ -1,5 +1,5 @@
 <template>
-  <div class="userAccountUpdate">
+  <div class="userAccountUpdate" style="margin-top: 80rem;">
     <div class="form">
       <div class="header">设置头像</div>
       <div class="field" v-if="avatarFile">

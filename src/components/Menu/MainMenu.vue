@@ -9,6 +9,7 @@ import {ref} from 'vue'
 import MenuItem from './menuItem/index.vue'
 import { MenuItemType } from '@/type/index';
 import router from '@/router';
+import { getStorage } from '@/utils/setStorage';
 
 const menuList =  ref<Array<MenuItemType>>([
   {
@@ -19,7 +20,7 @@ const menuList =  ref<Array<MenuItemType>>([
   {
     info:'用户',
     iconClass:'icon-ren',
-    link:`/home/users/${localStorage.getItem('uid')}`
+    link:`/home/users/${getStorage('uid')}/account`
   },
   {
     info:'首页',
