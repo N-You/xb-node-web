@@ -18,7 +18,7 @@
     </div>
     </div>
   </div>
-  </template>y
+  </template>
   
   <script lang="ts" setup>
   import { reactive } from 'vue';
@@ -29,7 +29,6 @@
   const formData = reactive<{name:string,password:string}>({name:'',password:''})
 
   defineProps<{title:string,explin:string}>()
-
   </script>
   
   <style scoped lang="sass">

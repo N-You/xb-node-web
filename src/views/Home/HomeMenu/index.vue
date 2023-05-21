@@ -5,7 +5,7 @@
     </div>
     <div class="userInfo">
       <user-avatar :avatarSrc="userAvatearImage"></user-avatar>
-    </div>
+    </div>    ··1·
     <main-menu></main-menu>
   </div>
 </template>
@@ -20,10 +20,10 @@ import darkLogo from '@/assets/img/logo3.png'
 import userAvatar from '@/components/Menu/User/components/user-avatar.vue'
 import { getStorage } from '@/utils/setStorage';
 
-const themeLogo = ref<any>(lightLogo)
+const themeLogo = ref<any>()
 
 const useHomeStore = homeStore()
-const useUserStore = userStore()
+// const useUserStore = userStore()
 
 watch(()=>useHomeStore.theme,(value:boolean)=>{
   value ? themeLogo.value = lightLogo : themeLogo.value = darkLogo
@@ -31,7 +31,7 @@ watch(()=>useHomeStore.theme,(value:boolean)=>{
   immediate:true
 })
 
-const userAvatearImage = ref<any>()
+const userAvatearImage = ref<string>()
 
 onMounted(async ()=>{
   const uid = getStorage('uid')
