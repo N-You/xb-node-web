@@ -1,10 +1,11 @@
 <template>
-  <div>首页</div>
-  <button class="button" @click="onClickPushMessage">提示消息</button>
+  <div style="margin-bottom: 50rem;">欢迎来到个人博客网站</div>
+  <PostIndex></PostIndex>
 </template>
 
 <script lang="ts" setup>
 import {notificatonStore} from '@/store/notificationStore'
+import PostIndex from '@/views/Post/postIndex.vue';
 
 const useNotificationStore = notificatonStore()
 

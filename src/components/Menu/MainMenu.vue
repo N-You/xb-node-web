@@ -14,8 +14,8 @@ import { getStorage } from '@/utils/setStorage';
 const menuList =  ref<Array<MenuItemType>>([
   {
     info:'首页',
-    iconClass:'icon-sousuo',
-    link:'/'
+    iconClass:'icon-31shouyexuanzhong',
+    link:'/home'
   },
   {
     info:'用户',
