@@ -2,11 +2,13 @@
     <div class="userAccount">
         <UserAccountUpdate></UserAccountUpdate>
         <UserAccountChangeName></UserAccountChangeName>
+        <UserAccountChangePassWord></UserAccountChangePassWord>
     </div>
 </template>
 
 <script lang="ts" setup>
 import UserAccountChangeName from './pages/userAccountChangeName.vue';
+import UserAccountChangePassWord from './pages/userAccountChangePassWord.vue';
 import UserAccountUpdate from './pages/userAccountUpdate.vue';
 
 const props = defineProps<{

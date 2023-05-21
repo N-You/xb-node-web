@@ -1,15 +1,16 @@
 <template>
-  <div class="userAccountChange">
+  <div class="userAccountChange" style="margin-top: 80rem;">
     <div class="form">
-      <div style="font-size: 20rem">修改名字</div>
+      <div style="font-size: 20rem">修改用户密码</div>
       <el-form :model="formData" label-width="120rem" ref="formRef" status-icon :rules="rules">
-        <el-form-item label="名称" prop="name">
+        <el-form-item label="新密码" prop="newPassword">
           <el-input
-            v-model="formData.name"
-            placeholder="请输入新的名称"
+            v-model="formData.newPassword"
+            type="password"
+            placeholder="请输入新的密码"
           ></el-input>
         </el-form-item>
-        <el-form-item v-if="formData.name"  label="验证用户密码" prop="passWord">
+        <el-form-item v-if="formData.newPassword"  label="验证用户密码" prop="passWord">
           <el-input
             v-model="formData.passWord"
             type="password"
@@ -37,18 +38,18 @@ const formRef = ref<FormInstance>();
 
 
 let formData = reactive<{
-  name: string;
+  newPassword: string;
   passWord: string;
 }>({
-  name: '',
+  newPassword: '',
   passWord: '',
 });
 
-const validateName = (rule: any, value: any, callback: any) => {
+const validatePassword = (rule: any, value: any, callback: any) => {
   if (value === '') {
-    callback(new Error('请输入名称'));
+    callback(new Error('请输入新的密码'));
   } else {
-    if (formData.name !== '') {
+    if (formData.newPassword !== '') {
       if (!formRef.value) return;
     }
     callback();
@@ -63,7 +64,7 @@ const validatePass = (rule: any, value: any, callback: any) => {
 };
 
 const rules = reactive<FormRules>({
-  name: [{ validator: validateName, trigger: 'blur' }],
+  newPassword: [{ validator: validatePassword, trigger: 'blur' }],
   passWord: [{ validator: validatePass, trigger: 'blur' }],
 });
 
@@ -71,12 +72,12 @@ function onClickSubmit(formEl: FormInstance | undefined) {
   if (!formEl) return;
   formEl.validate(async (valid) => {
     if (valid) {
-      console.log(formData.name,formData.passWord);
+      console.log(formData.newPassword,formData.passWord);
       useUserAcountStore.updateUserAccount({
         userId:parseInt(JSON.parse(localStorage.getItem('uid') as string),10),
         body:{
           update:{
-            name:formData.name
+            password:formData.newPassword
           },
           validate:{
             password:formData.passWord
@@ -84,14 +85,14 @@ function onClickSubmit(formEl: FormInstance | undefined) {
         }
       }).then(res=>{
         useNotificationStore.addMessage({
-        content: '修改用户名成功!',
+        content: '修改用户密码成功!',
       }); 
       }).catch(error=>{
         useNotificationStore.addMessage({
         content: error.data.message,
       }); 
       })
-      formData.name = ''
+      formData.newPassword = ''
       formData.passWord = ''
       location.reload()
     } else {
