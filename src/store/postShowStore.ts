@@ -29,33 +29,36 @@ export interface PostImte{
   ]
 }
 
-export const postStore = defineStore('postStore',()=>{
+export const postShowStore = defineStore('postShowStore',()=>{
 let load = ref<Boolean>(false)
-let posts = ref<any>([])
+let post = ref<any>([])
 
 const loading = computed(()=>{
-    return load.value ? true : false
-})
-const postList = computed(()=>{
-    if(posts.value){
-        return posts.value.map((post:any)=>postFileProcess(post))
-    }
+    return load
 })
 
-    async function getPosts(){
-    try{
-        const res = await ApiService.get(`/posts`)
-        posts.value = res.data
-      }catch(error:any){
-        const { response:res } = error
-        LogError(res.data.message)
-      }
+const postitem = computed(()=>{
+    return Object.keys(post.value).length ? postFileProcess(post.value) : null
+})
+
+  async function getPostById(postId:number){
+  try{
+    const res = await ApiService.get(`/posts/${postId}`)
+    post.value = res.data
+  }catch(error:any){
+    const { response:res } = error
+    LogError(res.data.message)
+  }
+}
+
+function setLoding(data:Boolean){
+    load.value = data
 }
 
 return {
-loading,
-postList,
+    loading,
+    postitem,
 
-getPosts
+    getPostById
 }
 })

@@ -13,7 +13,7 @@ const UserReplies = ()=>import('@/views/User/show/userReplies.vue')
 const UserAccount = ()=>import('@/views/User/account/userAccount.vue')
 
 const Posts = () => import('@/views/Post/postIndex.vue');
-const postShow = () => import('@/views/Post/postShow.vue')
+const postShow = () => import('@/views/Post/show/postShow.vue')
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
           {path:'account',name:'userAccount',component:UserAccount}
         ] },
         { path: '/posts', name: 'Posts', component: Posts},
-        { path: '/postShow/:postId', name: 'postShow', component: postShow},
+        { path: '/postShow/:postId', name: 'postShow', component: postShow,props:true},
       ] },
     ],
   },

@@ -10,9 +10,7 @@ import { onMounted, ref } from 'vue';
 import PostListItem from './PostListItem.vue';
 
 const usePostStore = postStore()
-onMounted(async ()=>{
-    console.log(111);
-    
+onMounted(async ()=>{ 
    await usePostStore.getPosts()
 })
 

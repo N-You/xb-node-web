@@ -21,11 +21,6 @@ const menuList =  ref<Array<MenuItemType>>([
     info:'用户',
     iconClass:'icon-ren',
     link:`/home/users/${getStorage('uid')}/account`
-  },
-  {
-    info:'首页',
-    iconClass:'icon-dianzan',
-    link:'/'
   }
 ])
 
