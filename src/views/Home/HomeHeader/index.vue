@@ -63,5 +63,5 @@ function changeTheme() {
   justify-content: flex-end
   align-items: center
 .shadow
-  box-shadow: 20rem 30rem 30rem rgba(0, 0, 0, 0.1)
+  box-shadow: 20rem 30rem 30rem rgba(0, 0, 0, 0.5)
 </style>

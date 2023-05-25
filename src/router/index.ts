@@ -14,6 +14,7 @@ const UserAccount = ()=>import('@/views/User/account/userAccount.vue')
 
 const Posts = () => import('@/views/Post/postIndex.vue');
 const postShow = () => import('@/views/Post/show/postShow.vue')
+const postIndexPopular = ()=>import('@/views/Post/show/postIndexPopular.vue')
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -32,6 +33,7 @@ const routes: Array<RouteRecordRaw> = [
         ] },
         { path: '/posts', name: 'Posts', component: Posts},
         { path: '/postShow/:postId', name: 'postShow', component: postShow,props:true},
+        { path: '/popular/:tag', name: 'postIndexPopular', component: postIndexPopular,props:true},
       ] },
     ],
   },

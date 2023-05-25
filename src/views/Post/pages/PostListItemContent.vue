@@ -1,7 +1,7 @@
 <template>
     <div class="PostListContent">
         <div class="thumbnail">
-            <userAvatar :avatarSrc="userAvatearImage" size="small" />
+            <userAvatar :avatarSrc="userAvatearImage" size="small" @click="handleAvatar(item?.user?.id)"/>
         </div>
         <div class="header">
             <div class="text">
@@ -38,6 +38,7 @@ import { computed, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { userAcountStore } from '@/store/userAcountStore';
 import { userStore } from '@/store/userStore';
+import router from '@/router';
 
 const useUserAccountStore = userAcountStore()
 const useUserStore = userStore();
@@ -63,6 +64,10 @@ function getUserInfo(id:number) {
   }
   useUserAccountStore.setAvatarPreviewImage(`http://localhost:3000/users/${id}/avatar?size=large`)
   userAvatearImage.value = useUserStore.avatarPreviewImage;
+}
+
+function handleAvatar(item:any){
+router.push({path:`/home/users/${item}`})
 }
 </script>
 

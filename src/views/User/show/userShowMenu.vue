@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { getStorage } from '@/utils/setStorage';
+import { getStorage, setStorage } from '@/utils/setStorage';
 import { reactive,watch } from 'vue';
 import { RouterLink } from 'vue-router';
 

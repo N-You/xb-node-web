@@ -11,4 +11,5 @@ const props = defineProps<{ post: any }>();
 <style lang="sass" scoped>
 .postShowContent
     font-size: 18rem
+    margin-bottom: 32rem
 </style>

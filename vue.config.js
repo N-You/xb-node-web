@@ -20,7 +20,7 @@ module.exports = defineConfig({
   configureWebpack: {
     resolve: {
       alias: {
-        '@/': path.resolve(__dirname, 'src/'),
+        '@/': path.resolve(__dirname, 'src/')
       },
     },
   },

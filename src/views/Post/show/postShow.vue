@@ -7,7 +7,7 @@
         </div>
         <PostShowHeader :post="usePostShowStore.postitem"></PostShowHeader>
         <PostShowContent :post="usePostShowStore.postitem"></PostShowContent>
-
+        <PostShowTags v-if="usePostShowStore.postitem?.tags" :tags="usePostShowStore.postitem?.tags"></PostShowTags>
     </div>
 </template>
 
@@ -18,6 +18,7 @@ import {postShowStore} from '@/store/postShowStore'
 import PostShowHeader from './postShowHeader.vue';
 import PostShowContent from './postShowContent.vue';
 import PostShowAction from './postShowAction.vue';
+import PostShowTags from './postShowTags.vue';
 const usePostShowStore = postShowStore()
 
 const props = defineProps<{

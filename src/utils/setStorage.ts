@@ -1,3 +1,5 @@
+import queryString,{ StringifyOptions } from "querystring"
+
 export function setStorage(name:string,data:any){
   return localStorage.setItem(name,JSON.stringify(data))
 }

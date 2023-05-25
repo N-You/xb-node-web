@@ -11,6 +11,10 @@ import UserAccountChangeName from './pages/userAccountChangeName.vue';
 import UserAccountChangePassWord from './pages/userAccountChangePassWord.vue';
 import UserAccountUpdate from './pages/userAccountUpdate.vue';
 
+function title(){
+    return '用户账户'
+}
+
 const props = defineProps<{
     user:Object
 }>()
